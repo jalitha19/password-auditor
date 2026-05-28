@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    /* Dark base + cyber grid pattern with very low opacity */
+    background-color: #070b0f;
+    background-image: 
+      /* Hexagon / circuit-like pattern (barely visible) */
+      repeating-linear-gradient(
+        45deg,
+        rgba(0, 255, 170, 0.03) 0px,
+        rgba(0, 255, 170, 0.03) 2px,
+        transparent 2px,
+        transparent 8px
+      ),
+      /* Diagonal thin lines */
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 170, 0.02) 0px,
+        rgba(0, 255, 170, 0.02) 1px,
+        transparent 1px,
+        transparent 40px
+      ),
+      /* Horizontal thin lines */
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 170, 0.02) 0px,
+        rgba(0, 255, 170, 0.02) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+    background-size: 32px 32px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+    font-family: 'Syne', sans-serif;
+    font-smoothing: antialiased;
+  }
+
+  /* Custom scrollbar – cyber style */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d1117;
+    border-left: 1px solid rgba(0, 255, 170, 0.1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1a2535;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ffaa50;
+  }
+
+  /* Focus rings – neon green */
+  *:focus-visible {
+    outline: 2px solid #00ffaa;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  button, a, input, textarea {
+    transition: all 0.2s ease;
+  }
+}
