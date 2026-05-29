@@ -1,40 +1,41 @@
 import React from 'react'
 
 const NAV = [
-  { id: 'strength', label: 'Strength Checker', icon: 'fa-bolt',       tag: '01' },
-  { id: 'hash',     label: 'Hash Engine',      icon: 'fa-lock',       tag: '02' },
-  { id: 'audit',    label: 'Audit Report',     icon: 'fa-clipboard-list', tag: '03' },
+  { id: 'strength', label: 'Strength Checker', icon: 'fa-bolt',         tag: 'PH1' },
+  { id: 'hash',     label: 'Hash Engine',      icon: 'fa-lock',         tag: 'PH2' },
+  { id: 'audit',    label: 'Audit Report',     icon: 'fa-clipboard-list', tag: 'PH4' },
 ]
 
 export default function Sidebar({ active, onNav }) {
   return (
-    <aside className="w-64 flex-shrink-0 bg-bg2 border-r border-border1 flex flex-col py-6 sticky top-0 h-screen backdrop-blur-sm">
+    <aside className="w-52 h-full bg-bg2 border-r border-border1 flex flex-col py-6">
+
       {/* Logo */}
-      <div className="px-6 pb-6 border-b border-border1 mb-6">
-        <div className="font-mono text-xs text-green tracking-wider uppercase mb-1">
+      <div className="px-5 pb-6 border-b border-border1 mb-5">
+        <div className="font-mono text-[11px] text-green tracking-widest uppercase mb-1">
           // sec-tool
         </div>
-        <div className="text-2xl font-extrabold tracking-tight leading-tight">
+        <div className="text-[18px] font-extrabold tracking-tight leading-tight">
           Pass<span className="text-green">Audit</span>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 px-4 flex flex-col gap-2">
+      {/* Nav */}
+      <nav className="flex-1 px-3 flex flex-col gap-1">
         {NAV.map(item => (
           <button
             key={item.id}
             onClick={() => onNav(item.id)}
-            className={`group flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer w-full text-left
+            className={`flex items-center gap-2.5 px-3 py-2.5 rounded-md text-[13px] font-medium border transition-all duration-150 cursor-pointer w-full text-left
               ${active === item.id
-                ? 'text-green bg-green/10 border-l-4 border-green shadow-[0_0_8px_rgba(0,255,170,0.2)]'
-                : 'text-text2 bg-transparent border-l-4 border-transparent hover:text-text1 hover:bg-surface hover:border-green/40'
+                ? 'text-green bg-green/10 border-green/20'
+                : 'text-text2 bg-transparent border-transparent hover:text-text1 hover:bg-surface hover:border-border1'
               }`}
           >
-            <i className={`fa-solid ${item.icon} w-5 text-center text-base ${active === item.id ? 'text-green' : 'text-text3 group-hover:text-green'}`} />
+            <i className={`fa-solid ${item.icon} w-4 text-center text-[14px]`} />
             <span className="flex-1">{item.label}</span>
-            <span className={`font-mono text-[10px] px-2 py-0.5 rounded-full tracking-wide
-              ${active === item.id ? 'bg-green/20 text-green' : 'bg-surface2 text-text3'}`}>
+            <span className={`font-mono text-[9px] px-1.5 py-0.5 rounded tracking-wide
+              ${active === item.id ? 'bg-green/10 text-green/70' : 'bg-surface2 text-text3'}`}>
               {item.tag}
             </span>
           </button>
@@ -42,8 +43,8 @@ export default function Sidebar({ active, onNav }) {
       </nav>
 
       {/* Footer */}
-      <div className="px-6 pt-4 border-t border-border1">
-        <div className="font-mono text-xs text-text3 tracking-wide">v2.0 · cyber‑audit</div>
+      <div className="px-5 pt-4 border-t border-border1">
+        <div className="font-mono text-[10px] text-text3 tracking-wide">v1.0.0 · edu project</div>
       </div>
     </aside>
   )
