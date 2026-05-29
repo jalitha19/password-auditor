@@ -8,7 +8,10 @@ from wordlist_attack import dictionary_attack
 from auditor import audit_password
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[
+    "http://localhost:5173",                    # local dev
+    "https://your-app.vercel.app",              # your Vercel URL (update after deploy)
+])
 
 WORDLIST = os.path.join(os.path.dirname(__file__), "wordlist_sample.txt")
 
@@ -75,4 +78,5 @@ def audit():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
